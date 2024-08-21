@@ -135,7 +135,7 @@ config_package_add luci-app-advancedsetting
 config_package_add luci-app-arpbind
 config_package_add luci-app-filebrowser
 config_package_add luci-app-netdata
-config_package_add luci-app-nfs
+#config_package_add luci-app-nfs
 config_package_add luci-app-ramfree
 config_package_add luci-app-statistics
 config_package_add luci-app-vnstat2
