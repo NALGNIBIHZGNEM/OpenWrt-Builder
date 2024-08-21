@@ -180,8 +180,6 @@ config_package_add luci-app-modemband
 config_package_add luci-app-3ginfo-lite
 
 
-config_package_add luci-app-3ginfo-lite
-
 
 
 
