@@ -57,11 +57,32 @@ function clean_packages(){
 # Add the default password for the 'root' user（Change the empty password to 'password'）
 sed -i 's/root:::0:99999:7:::/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.::0:99999:7:::/g' package/base-files/files/etc/shadow
 
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.3.1/g' package/base-files/files/bin/config_generate
 
-# Modify default theme
+# 修改默认IP
+sed -i 's/192.168.1.1/192.168.66.253/g' package/base-files/files/bin/config_generate
+
+# 修改默认主题
 sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
+
+# 修改主机名
+sed -i 's/ImmortalWrt/GBC/g' package/base-files/files/bin/config_generate
+
+# 修改系统信息
+# cp -f $GITHUB_WORKSPACE/99-default-settings package/emortal/default-settings/files/99-default-settings
+cp -f $GITHUB_WORKSPACE/banner package/base-files/files/etc/banner
+
+# 修改主题背景
+cp -f $GITHUB_WORKSPACE/argon/img/bg1.jpg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/bg1.jpg
+cp -f $GITHUB_WORKSPACE/argon/img/argon.svg feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/img/argon.svg
+cp -f $GITHUB_WORKSPACE/argon/favicon.ico feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/favicon.ico
+cp -f $GITHUB_WORKSPACE/argon/icon/android-icon-192x192.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/android-icon-192x192.png
+cp -f $GITHUB_WORKSPACE/argon/icon/apple-icon-144x144.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-144x144.png
+cp -f $GITHUB_WORKSPACE/argon/icon/apple-icon-60x60.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-60x60.png
+cp -f $GITHUB_WORKSPACE/argon/icon/apple-icon-72x72.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/apple-icon-72x72.png
+cp -f $GITHUB_WORKSPACE/argon/icon/favicon-16x16.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-16x16.png
+cp -f $GITHUB_WORKSPACE/argon/icon/favicon-32x32.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-32x32.png
+cp -f $GITHUB_WORKSPACE/argon/icon/favicon-96x96.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/favicon-96x96.png
+cp -f $GITHUB_WORKSPACE/argon/icon/ms-icon-144x144.png feeds/luci/themes/luci-theme-argon/htdocs/luci-static/argon/icon/ms-icon-144x144.png
 
 # 删除
 # Sound Support
@@ -99,16 +120,29 @@ config_package_add luci-app-dockerman
 # kms
 config_package_add luci-app-vlmcsd
 # usb 2.0 3.0 支持
-config_package_add kmod-usb2
-config_package_add kmod-usb3
+#config_package_add kmod-usb2
+#config_package_add kmod-usb3
 # usb 网络支持
-config_package_add usbmuxd
-config_package_add usbutils
-config_package_add usb-modeswitch
-config_package_add kmod-usb-serial
-config_package_add kmod-usb-serial-option
-config_package_add kmod-usb-net-rndis
-config_package_add kmod-usb-net-ipheth
+#config_package_add usbmuxd
+#config_package_add usbutils
+#config_package_add usb-modeswitch
+#config_package_add kmod-usb-serial
+#config_package_add kmod-usb-serial-option
+#config_package_add kmod-usb-net-rndis
+#config_package_add kmod-usb-net-ipheth
+config_package_add luci-app-adbyby-plus
+config_package_add luci-app-advancedsetting
+config_package_add luci-app-arpbind
+config_package_add luci-app-filebrowser
+config_package_add luci-app-netdata
+config_package_add luci-app-nfs
+config_package_add luci-app-ramfree
+config_package_add luci-app-statistics
+config_package_add luci-app-vnstat2
+config_package_add luci-app-wechatpush
+config_package_add luci-app-wol
+config_package_add luci-app-zerotier
+
 
 # 第三方软件包
 mkdir -p package/custom
@@ -144,6 +178,16 @@ config_package_add luci-app-sms-tool-js
 config_package_add luci-app-modemband
 ### luci-app-3ginfo-lite
 config_package_add luci-app-3ginfo-lite
+
+
+config_package_add luci-app-3ginfo-lite
+
+
+
+
+
+
+
 
 # 镜像生成
 # 修改分区大小
